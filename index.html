@@ -20,7 +20,7 @@
         .button {
             padding: 10px 20px;
             font-size: 16px;
-            background-color: #40E0D0; /* Turquoise color */
+            background-color: #0993C1;
             color: white;
             border: none;
             cursor: pointer;
@@ -51,6 +51,8 @@
         <button class="button" id="signInButton">Sign IN</button>
         <button class="button" id="signOutButton" style="display: none;">Sign OUT</button>
         <button class="button" id="googleButton">Google</button>
+        <button class="button" id="youtubeButton">Youtube</button>
+        <button class="button" id="youtubeChannel">My Youtube Channel</button>
     </div>
 
     <script>
@@ -85,6 +87,14 @@
 
         googleButton.addEventListener('click', function() {
             window.location.href = 'https://www.google.com';
+        });
+
+        youtubeButton.addEventListener('click', function() {
+            window.location.href = 'https://www.youtube.com';
+        });
+        
+        youtubeChannel.addEventListener('click', function() {
+            window.location.href = 'https://www.youtube.com/@LottleGD';
         });
     </script>
 </body>
