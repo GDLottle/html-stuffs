@@ -9,6 +9,8 @@
             font-family: Arial, sans-serif;
             text-align: center;
             margin-top: 20%;
+            background-color: #121212;
+            color: #ffffff;
         }
         .container {
             display: flex;
@@ -28,6 +30,18 @@
         .button:hover {
             background-color: #30b0a0;
         }
+        input {
+            padding: 10px;
+            font-size: 16px;
+            border-radius: 5px;
+            border: 1px solid #40E0D0;
+            background-color: #333333;
+            color: white;
+            margin-bottom: 10px;
+        }
+        input::placeholder {
+            color: #999999;
+        }
     </style>
 </head>
 <body>
@@ -40,9 +54,7 @@
     </div>
 
     <script>
-        const correctID = "magnificentmango";
-        const correctID = "gloriousgoo";
-        const correctID = "semelyshu";
+        const correctIDs = ["magnificentmango", "gloriousgoo", "semelyshu"];
         const statusTitle = document.getElementById('statusTitle');
         const userIDInput = document.getElementById('userID');
         const signInButton = document.getElementById('signInButton');
@@ -51,7 +63,7 @@
 
         signInButton.addEventListener('click', function() {
             const userID = userIDInput.value;
-            if (userID === correctID) {
+            if (correctIDs.includes(userID)) {
                 statusTitle.textContent = 'Status of Login (SoL): Signed IN';
                 alert('Sign in successful!');
                 userIDInput.style.display = 'none';
@@ -68,6 +80,7 @@
             userIDInput.style.display = 'inline-block';
             signInButton.style.display = 'inline-block';
             signOutButton.style.display = 'none';
+            userIDInput.value = ''; // Clear the input field
         });
 
         googleButton.addEventListener('click', function() {
