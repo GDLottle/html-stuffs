@@ -3,16 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login Status Example</title>
+    <title>Sign In Page</title>
     <style>
         body {
             font-family: Arial, sans-serif;
             text-align: center;
             margin-top: 20%;
         }
-        h1 {
-            font-size: 24px;
-            margin-bottom: 20px;
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
         .button {
             padding: 10px 20px;
@@ -30,21 +31,44 @@
     </style>
 </head>
 <body>
-    <h1>Status of Login (SoL): Signed IN</h1>
-    <button class="button" id="signOutButton">Sign OUT</button>
-    <button class="button" id="signInButton">Sign IN</button>
-    <button class="button" id="googleButton">Google</button>
+    <div class="container">
+        <h1 id="statusTitle">Please Sign In</h1>
+        <input type="text" id="userID" placeholder="Enter your ID">
+        <button class="button" id="signInButton">Sign IN</button>
+        <button class="button" id="signOutButton" style="display: none;">Sign OUT</button>
+        <button class="button" id="googleButton">Google</button>
+    </div>
 
     <script>
-        document.getElementById('signOutButton').addEventListener('click', function() {
-            document.querySelector('h1').textContent = 'Status of Login (SoL): Signed OUT';
+        const correctID = "Suriya"; // Replace with the correct ID
+        const statusTitle = document.getElementById('statusTitle');
+        const userIDInput = document.getElementById('userID');
+        const signInButton = document.getElementById('signInButton');
+        const signOutButton = document.getElementById('signOutButton');
+        const googleButton = document.getElementById('googleButton');
+
+        signInButton.addEventListener('click', function() {
+            const userID = userIDInput.value;
+            if (userID === correctID) {
+                statusTitle.textContent = 'Status of Login (SoL): Signed IN';
+                alert('Sign in successful!');
+                userIDInput.style.display = 'none';
+                signInButton.style.display = 'none';
+                signOutButton.style.display = 'inline-block';
+            } else {
+                alert('Sign in unsuccessful. Please try again.');
+            }
         });
 
-        document.getElementById('signInButton').addEventListener('click', function() {
-            document.querySelector('h1').textContent = 'Status of Login (SoL): Signed IN';
+        signOutButton.addEventListener('click', function() {
+            statusTitle.textContent = 'You were successfully signed out';
+            alert('You were successfully signed out');
+            userIDInput.style.display = 'inline-block';
+            signInButton.style.display = 'inline-block';
+            signOutButton.style.display = 'none';
         });
 
-        document.getElementById('googleButton').addEventListener('click', function() {
+        googleButton.addEventListener('click', function() {
             window.location.href = 'https://www.google.com';
         });
     </script>
